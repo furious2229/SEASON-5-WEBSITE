@@ -1,153 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FG NETWORK | Minecraft Server</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Minecraftia', sans-serif;
-      background: linear-gradient(#1a1a1a, #0e0e0e);
-      background-image: url('https://static.planetminecraft.com/files/image/minecraft/project/2023/472/17273059_xl.webp');
-      background-size: cover;
-      background-attachment: fixed;
-      color: #fff;
-      text-align: center;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FG NETWORK | Minecraft Server</title>
+<style>
+@import url('https://fonts.cdnfonts.com/s/15085/Minecraftia-Regular.ttf');
 
-    header {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 30px 0;
-      border-bottom: 4px solid #2ecc71;
-      box-shadow: 0 0 15px #2ecc71;
-    }
+body {
+  margin: 0;
+  font-family: 'Minecraftia', sans-serif;
+  color: #fff;
+  background: linear-gradient(180deg, #87ceeb 0%, #9be2ff 50%, #7ec850 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
 
-    header img {
-      width: 180px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px #00ff88;
-    }
+header {
+  text-align: center;
+  padding: 40px 20px;
+  animation: float 4s ease-in-out infinite;
+}
 
-    h1 {
-      font-size: 2.5em;
-      color: #2ecc71;
-      text-shadow: 2px 2px 10px #000;
-    }
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
 
-    p.tagline {
-      font-size: 1.1em;
-      color: #eee;
-      margin-top: -10px;
-    }
+header img {
+  width: 200px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px #00ff66;
+  animation: glow 2s infinite alternate;
+}
 
-    .container {
-      margin-top: 60px;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 15px;
-      width: 80%;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow: 0 0 20px #2ecc71;
-    }
+@keyframes glow {
+  from { box-shadow: 0 0 10px #00ff66; }
+  to { box-shadow: 0 0 25px #00ffaa; }
+}
 
-    .ip-box {
-      background: #111;
-      border: 2px solid #2ecc71;
-      border-radius: 10px;
-      padding: 15px;
-      display: inline-block;
-      margin-top: 10px;
-      font-size: 1.2em;
-      color: #2ecc71;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+h1 {
+  color: #2e8b57;
+  font-size: 2.8em;
+  text-shadow: 2px 2px 0 #fff, 4px 4px 0 #2e8b57;
+  margin-top: 10px;
+}
 
-    .ip-box:hover {
-      background: #2ecc71;
-      color: #111;
-    }
+.tagline {
+  font-size: 1.1em;
+  color: #fff;
+  opacity: 0;
+  animation: fadeIn 3s forwards 1s;
+}
 
-    .button {
-      display: inline-block;
-      background: #00ff88;
-      padding: 15px 30px;
-      border-radius: 10px;
-      color: #000;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 1.1em;
-      box-shadow: 0 0 15px #00ff88;
-      transition: 0.3s;
-    }
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
 
-    .button:hover {
-      background: #00cc6f;
-      box-shadow: 0 0 25px #00ff88;
-    }
+.container {
+  margin: 40px auto;
+  width: 85%;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 15px;
+  border: 3px solid #2e8b57;
+  box-shadow: 0 0 15px #7ec850;
+  text-align: center;
+}
 
-    .founder {
-      margin-top: 60px;
-      padding: 30px;
-      background: rgba(10, 10, 10, 0.7);
-      border-top: 3px solid #2ecc71;
-    }
+.ip-box {
+  display: inline-block;
+  background: #222;
+  border: 3px solid #00ff66;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: #00ff66;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-    .founder img {
-      width: 120px;
-      border-radius: 50%;
-      box-shadow: 0 0 20px #2ecc71;
-    }
+.ip-box:hover {
+  background: #00ff66;
+  color: #111;
+  transform: scale(1.05);
+}
 
-    footer {
-      margin-top: 40px;
-      padding: 15px;
-      background: rgba(0, 0, 0, 0.7);
-      border-top: 2px solid #2ecc71;
-      color: #999;
-    }
+.button {
+  display: inline-block;
+  background: linear-gradient(180deg, #4aff80, #00cc44);
+  padding: 15px 35px;
+  border-radius: 10px;
+  margin: 15px;
+  text-decoration: none;
+  color: #111;
+  font-weight: bold;
+  box-shadow: 0 6px 0 #006633, 0 0 15px #00ff88;
+  transition: all 0.2s ease;
+}
 
-    @font-face {
-      font-family: 'Minecraftia';
-      src: url('https://fonts.cdnfonts.com/s/15085/Minecraftia-Regular.ttf');
-    }
-  </style>
+.button:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 0 #004422, 0 0 25px #00ff88;
+}
+
+.founder {
+  background: url('https://i.imgur.com/TYf8h5O.png'); /* wood plank texture */
+  background-size: cover;
+  margin-top: 60px;
+  padding: 40px 20px;
+  color: #fff7d1;
+  border-top: 5px solid #7c4a1a;
+  box-shadow: inset 0 0 20px #00000070;
+}
+
+.founder img {
+  width: 120px;
+  border-radius: 50%;
+  box-shadow: 0 0 25px #00ff66;
+}
+
+footer {
+  background: #2e8b57;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  border-top: 3px solid #fff;
+}
+
+.copy-popup {
+  position: fixed;
+  top: 20px;
+  right: -200px;
+  background: #00ff88;
+  color: #111;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: right 0.5s;
+  box-shadow: 0 0 15px #00ff88;
+}
+.copy-popup.show { right: 20px; }
+
+@media (max-width:600px){
+  h1 { font-size: 2em; }
+  header img { width: 150px; }
+}
+</style>
 </head>
 <body>
-  <header>
-    <img src="https://media.discordapp.net/attachments/1335903965258448980/1337788675630825524/8c0165ec2b55103a5ed524ca882880b1.png" alt="FG NETWORK Logo">
-    <h1>FG NETWORK</h1>
-    <p class="tagline">Your Gateway to the Ultimate Minecraft Experience</p>
-  </header>
+<header>
+  <img src="FG.png" alt="FG NETWORK Logo">
+  <h1>FG NETWORK</h1>
+  <p class="tagline">Your Gateway to the Ultimate Minecraft Experience</p>
+</header>
 
-  <div class="container">
-    <h2>🎮 Join Our Minecraft Server</h2>
-    <div class="ip-box" onclick="copyIP()">play.fgnetworks5.online : 19343</div>
-    <p>Click to copy IP & Port</p>
+<div class="container">
+  <h2>🎮 Join Our Minecraft Server</h2>
+  <div class="ip-box" onclick="copyIP()">play.fgnetworks5.online : 19343</div>
+  <p>Click to copy IP & Port</p>
 
-    <a class="button" href="https://docs.google.com/forms/d/182hcVZUia6V7UUaU__DLjP99WVw6XMhXlKQFYKLfoAI/edit#responses" target="_blank">✅ Apply for Whitelist</a>
+  <a class="button" href="https://docs.google.com/forms/d/182hcVZUia6V7UUaU__DLjP99WVw6XMhXlKQFYKLfoAI/edit#responses" target="_blank">✅ Apply for Whitelist</a>
+  <a class="button" href="https://discord.gg/cVk3FcEXVS" target="_blank">💬 Join Discord</a>
+</div>
 
-    <p style="margin-top: 30px;">Join our Discord to chat, get updates & meet other players!</p>
-    <a class="button" href="https://discord.gg/cVk3FcEXVS" target="_blank">💬 Join Discord</a>
-  </div>
+<div class="founder">
+  <h2>👑 Founder</h2>
+  <img src="FG.png" alt="Founder Logo">
+  <p>King Furiois - Creator & Owner of FG NETWORK</p>
+</div>
 
-  <div class="founder">
-    <h2>👑 Founder</h2>
-    <img src="https://media.discordapp.net/attachments/1335903965258448980/1337788675630825524/8c0165ec2b55103a5ed524ca882880b1.png" alt="Founder Logo">
-    <p>King Furiois - Creator & Owner of FG NETWORK</p>
-  </div>
+<footer>
+  <p>© 2025 FG NETWORK. All Rights Reserved.</p>
+</footer>
 
-  <footer>
-    <p>© 2025 FG NETWORK. All Rights Reserved.</p>
-  </footer>
+<div id="popup" class="copy-popup">Server IP Copied!</div>
 
-  <script>
-    function copyIP() {
-      navigator.clipboard.writeText('play.fgnetworks5.online:19343');
-      alert('Server IP copied! Join now on Minecraft.');
-    }
-  </script>
+<script>
+function copyIP() {
+  navigator.clipboard.writeText('play.fgnetworks5.online:19343');
+  const popup = document.getElementById('popup');
+  popup.classList.add('show');
+  setTimeout(()=>popup.classList.remove('show'), 2000);
+}
+</script>
 </body>
 </html>
