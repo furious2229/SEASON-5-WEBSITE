@@ -1,168 +1,153 @@
-<!-- FG NETWORK - Single-file website (index.html)
-  Instructions: Save as index.html. Replace the WHITELIST_FORM_URL and DISCORD_URL with your real links.
-  Hosting (free): GitHub Pages, Netlify, Vercel, or upload to cPanel public_html.
-  This file includes: Hero, Server info, Features, Whitelist button (redirects to your form), Discord join, Contact.
--->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>FG NETWORK — Minecraft</title>
-  <meta name="description" content="FG NETWORK — Private Minecraft server. Apply for whitelist, join our Discord, view server info.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FG NETWORK | Minecraft Server</title>
   <style>
-    :root{--bg:#071023;--card:#0c1320;--accent:#ff6b6b;--accent2:#7c3aed;--muted:#97a6b2}
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;color:#e6eef6;background:linear-gradient(180deg,#030417 0%,var(--bg) 100%)}
-    .wrap{max-width:1100px;margin:22px auto;padding:20px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:72px;height:72px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;box-shadow:0 6px 18px rgba(124,58,237,0.12)}
-    nav a{color:var(--muted);text-decoration:none;margin-left:16px}
-    .hero{display:grid;grid-template-columns:1fr 380px;gap:22px;padding:28px;margin-top:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:14px}
-    .hero h1{margin:0;font-size:34px;line-height:1.02}
-    .tag{color:var(--muted);margin-top:8px}
-    .actions{margin-top:18px;display:flex;gap:12px}
-    .btn{padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:700;display:inline-block}
-    .btn-apply{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#071022}
-    .btn-discord{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:16px;border-radius:12px}
-    .server-box{display:flex;flex-direction:column;gap:8px}
-    .muted{color:var(--muted)}
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
-    .feature h4{margin:0 0 6px}
-    #whitelist{margin-top:20px}
-    .center{text-align:center}
-    footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
-    @media (max-width:900px){.hero{grid-template-columns:1fr;}.features{grid-template-columns:1fr 1fr}.logo{width:56px;height:56px}}
-    @media (max-width:520px){.features{grid-template-columns:1fr}.hero{padding:18px}.brand .hide-sm{display:none}}
+    body {
+      margin: 0;
+      font-family: 'Minecraftia', sans-serif;
+      background: linear-gradient(#1a1a1a, #0e0e0e);
+      background-image: url('https://static.planetminecraft.com/files/image/minecraft/project/2023/472/17273059_xl.webp');
+      background-size: cover;
+      background-attachment: fixed;
+      color: #fff;
+      text-align: center;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px 0;
+      border-bottom: 4px solid #2ecc71;
+      box-shadow: 0 0 15px #2ecc71;
+    }
+
+    header img {
+      width: 180px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #00ff88;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #2ecc71;
+      text-shadow: 2px 2px 10px #000;
+    }
+
+    p.tagline {
+      font-size: 1.1em;
+      color: #eee;
+      margin-top: -10px;
+    }
+
+    .container {
+      margin-top: 60px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 20px #2ecc71;
+    }
+
+    .ip-box {
+      background: #111;
+      border: 2px solid #2ecc71;
+      border-radius: 10px;
+      padding: 15px;
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 1.2em;
+      color: #2ecc71;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .ip-box:hover {
+      background: #2ecc71;
+      color: #111;
+    }
+
+    .button {
+      display: inline-block;
+      background: #00ff88;
+      padding: 15px 30px;
+      border-radius: 10px;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.1em;
+      box-shadow: 0 0 15px #00ff88;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      background: #00cc6f;
+      box-shadow: 0 0 25px #00ff88;
+    }
+
+    .founder {
+      margin-top: 60px;
+      padding: 30px;
+      background: rgba(10, 10, 10, 0.7);
+      border-top: 3px solid #2ecc71;
+    }
+
+    .founder img {
+      width: 120px;
+      border-radius: 50%;
+      box-shadow: 0 0 20px #2ecc71;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      border-top: 2px solid #2ecc71;
+      color: #999;
+    }
+
+    @font-face {
+      font-family: 'Minecraftia';
+      src: url('https://fonts.cdnfonts.com/s/15085/Minecraftia-Regular.ttf');
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo">FG</div>
-        <div>
-          <div style="font-weight:800">FG NETWORK</div>
-          <div class="muted" style="font-size:13px">Private Minecraft server • Apply for whitelist to join</div>
-        </div>
-      </div>
-      <nav class="hide-sm">
-        <a href="#features">Features</a>
-        <a href="#whitelist">Whitelist</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+  <header>
+    <img src="https://media.discordapp.net/attachments/1335903965258448980/1337788675630825524/8c0165ec2b55103a5ed524ca882880b1.png" alt="FG NETWORK Logo">
+    <h1>FG NETWORK</h1>
+    <p class="tagline">Your Gateway to the Ultimate Minecraft Experience</p>
+  </header>
 
-    <main>
-      <section class="hero">
-        <div>
-          <h1>FG NETWORK — Private Minecraft Server</h1>
-          <div class="tag">Ek friendly, secure aur professional private server. Agar aap join karna chahte ho toh whitelist apply karo — link seedha form par jayega.</div>
+  <div class="container">
+    <h2>🎮 Join Our Minecraft Server</h2>
+    <div class="ip-box" onclick="copyIP()">play.fgnetworks5.online : 19343</div>
+    <p>Click to copy IP & Port</p>
 
-          <div class="actions">
-            <!-- Replace WHITELIST_FORM_URL with your real form link -->
-            <a class="btn btn-apply" href="https://docs.google.com/forms/d/182hcVZUia6V7UUaU__DLjP99WVw6XMhXlKQFYKLfoAI/edit#responses" id="applyBtn">Apply for Whitelist</a>
-            <!-- Replace DISCORD_URL with your Discord invite -->
-            <a class="btn btn-discord" href="https://discord.gg/cVk3FcEXVS" target="_blank">Join Discord</a>
-          </div>
+    <a class="button" href="https://docs.google.com/forms/d/182hcVZUia6V7UUaU__DLjP99WVw6XMhXlKQFYKLfoAI/edit#responses" target="_blank">✅ Apply for Whitelist</a>
 
-          <div class="features" style="margin-top:18px">
-            <div class="card feature"><h4>Private</h4><p class="muted">Sirf approved players hi join kar sakte hain.</p></div>
-            <div class="card feature"><h4>Secure</h4><p class="muted">Strict rules aur safe environment.</p></div>
-            <div class="card feature"><h4>Friendly Community</h4><p class="muted">Active aur supportive members.</p></div>
-          </div>
-        </div>
-
-        <aside class="card server-box">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div>
-              <div style="font-size:14px;font-weight:700">Server IP</div>
-              <div class="muted">play.fgnetworks5.online</div>
-            </div>
-            <div class="center">
-              <div style="font-size:12px;color:var(--muted)">Status</div>
-              <div id="status" style="font-weight:800;margin-top:6px">Offline</div>
-            </div>
-          </div>
-
-          <div style="margin-top:12px">
-            <div class="muted">Latest updates</div>
-            <ul style="margin:8px 0 0;padding-left:18px;color:var(--muted)">
-              <li>Server launched (private beta)</li>
-              <li>Whitelist process active</li>
-            </ul>
-          </div>
-
-          <div style="margin-top:12px;display:flex;gap:8px;justify-content:center">
-            <a class="btn btn-apply" href="https://docs.google.com/forms/d/182hcVZUia6V7UUaU__DLjP99WVw6XMhXlKQFYKLfoAI/edit#responses">Apply</a>
-            <a class="btn btn-discord" href="https://discord.gg/cVk3FcEXVS" target="_blank">Discord</a>
-          </div>
-        </aside>
-      </section>
-
-      <section id="features" style="margin-top:18px">
-        <h2>Why FG NETWORK?</h2>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px">
-          <div class="card">Carefully curated whitelist to keep trolls away and build a community.</div>
-          <div class="card">Custom plugins, regular events, staff to help new players.</div>
-        </div>
-      </section>
-
-      <section id="whitelist">
-        <h2 style="margin-top:18px">Whitelist — Apply to join</h2>
-        <div class="card" style="margin-top:8px">
-          <p class="muted">Click the button below to open the whitelist application form. Aapka form directly humare Google Form / Typeform / custom form par jayega (jo bhi link aap daloge).</p>
-          <div style="margin-top:12px">
-            <a class="btn btn-apply" href="https://example.com/whitelist-form" id="applyBtn2">Go to Whitelist Form</a>
-          </div>
-
-          <div style="margin-top:12px;color:var(--muted)">
-            <strong>Process:</strong>
-            <ol>
-              <li>Form fill karo — basic questions (Discord, IGN, reason to join).</li>
-              <li>Staff review karega — agar approved hua toh aapko Discord par aur server whitelist ki details bheji jayegi.</li>
-              <li>Join karne ke liye server IP aur rules follow karo.</li>
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" style="margin-top:18px">
-        <h2>Contact</h2>
-        <div class="card" style="margin-top:8px">
-          <p class="muted">Questions? Join Discord or email the admin.</p>
-          <p class="muted">Admin email: <a href="mailto:admin@fg-network.example" style="color:inherit;text-decoration:underline">admin@fg-network.example</a></p>
-        </div>
-      </section>
-
-    </main>
-
-    <footer>
-      © <span id="year"></span> FG NETWORK • Private server — All rights reserved
-    </footer>
+    <p style="margin-top: 30px;">Join our Discord to chat, get updates & meet other players!</p>
+    <a class="button" href="https://discord.gg/cVk3FcEXVS" target="_blank">💬 Join Discord</a>
   </div>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <div class="founder">
+    <h2>👑 Founder</h2>
+    <img src="https://media.discordapp.net/attachments/1335903965258448980/1337788675630825524/8c0165ec2b55103a5ed524ca882880b1.png" alt="Founder Logo">
+    <p>King Furiois - Creator & Owner of FG NETWORK</p>
+  </div>
 
-    // Replace placeholders when you edit the file or host using your actual values.
-    // -- Small optional script to check server status via an API (disabled by default).
-    // If you have a server-status API, set `SERVER_STATUS_API` to its URL. It should return JSON {status: "online"/"offline", players: X}
-    const SERVER_STATUS_API = null; // e.g. "https://api.mcsrvstat.us/2/play.example.com"
-    async function fetchStatus(){
-      if(!SERVER_STATUS_API) return;
-      try{
-        const r = await fetch(SERVER_STATUS_API);
-        if(!r.ok) throw new Error('status fetch failed');
-        const j = await r.json();
-        // set status text based on returned fields (customize as per API)
-        const statusEl = document.getElementById('status');
-        statusEl.textContent = j.online ? 'Online — ' + (j.players && j.players.online ? j.players.online + ' players' : 'players info') : 'Offline';
-      }catch(e){console.log('status error', e)}
+  <footer>
+    <p>© 2025 FG NETWORK. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function copyIP() {
+      navigator.clipboard.writeText('play.fgnetworks5.online:19343');
+      alert('Server IP copied! Join now on Minecraft.');
     }
-    fetchStatus();
   </script>
 </body>
 </html>
