@@ -1,251 +1,168 @@
-<!DOCTYPE html>
+<!-- FG NETWORK - Single-file website (index.html)
+  Instructions: Save as index.html. Replace the WHITELIST_FORM_URL and DISCORD_URL with your real links.
+  Hosting (free): GitHub Pages, Netlify, Vercel, or upload to cPanel public_html.
+  This file includes: Hero, Server info, Features, Whitelist button (redirects to your form), Discord join, Contact.
+-->
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[FG NETWORK]</title>
-    <link rel="icon" type="image/png" href="MLOGO.png">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.bunny.net/css?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FG NETWORK — Minecraft</title>
+  <meta name="description" content="FG NETWORK — Private Minecraft server. Apply for whitelist, join our Discord, view server info.">
+  <style>
+    :root{--bg:#071023;--card:#0c1320;--accent:#ff6b6b;--accent2:#7c3aed;--muted:#97a6b2}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;color:#e6eef6;background:linear-gradient(180deg,#030417 0%,var(--bg) 100%)}
+    .wrap{max-width:1100px;margin:22px auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:72px;height:72px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;box-shadow:0 6px 18px rgba(124,58,237,0.12)}
+    nav a{color:var(--muted);text-decoration:none;margin-left:16px}
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:22px;padding:28px;margin-top:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:14px}
+    .hero h1{margin:0;font-size:34px;line-height:1.02}
+    .tag{color:var(--muted);margin-top:8px}
+    .actions{margin-top:18px;display:flex;gap:12px}
+    .btn{padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:700;display:inline-block}
+    .btn-apply{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#071022}
+    .btn-discord{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:16px;border-radius:12px}
+    .server-box{display:flex;flex-direction:column;gap:8px}
+    .muted{color:var(--muted)}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .feature h4{margin:0 0 6px}
+    #whitelist{margin-top:20px}
+    .center{text-align:center}
+    footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
+    @media (max-width:900px){.hero{grid-template-columns:1fr;}.features{grid-template-columns:1fr 1fr}.logo{width:56px;height:56px}}
+    @media (max-width:520px){.features{grid-template-columns:1fr}.hero{padding:18px}.brand .hide-sm{display:none}}
+  </style>
 </head>
 <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <nav class="desktop_navbar">
-      <a href="#"><img class="desktop_navbar_logo_img" src="MLOGO.png" alt="logo"></a>
-      <a href="https://minecraft-mp.com/server-s340758" class="desktop_navbar_link">Vote</a>
-      <a href="#discord" class="desktop_navbar_link scroll">Community</a>
-      <a href="#about" class="desktop_navbar_link scroll">Staff</a>
-      <div class="desktop_navbar_link2_div">
-          <a href="#join" class="desktop_navbar_link2 scroll">Join Us!</a>
-      </div>
-    </nav>
-    <div class="mobile_navbar">
-      <a href="#" class="mobile_navbar_logo_img_a"><img class="mobile_navbar_logo_img" src="MLOGO.png" alt="logo"></a>
-      <div id="mobile_navbar_links">
-          <a class="mobile_navbar_link" onclick="mobile_navbar_link_hider()" href="https://minecraft-mp.com/server-s340758">Vote</a>
-          <a class="mobile_navbar_link scroll" onclick="mobile_navbar_link_hider()" href="#discord">Community</a>
-          <a class="mobile_navbar_link scroll" onclick="mobile_navbar_link_hider()" href="#about">Staff</a>
-          <a class="mobile_navbar_link scroll" onclick="mobile_navbar_link_hider()" href="#join">Join Us</a>
-        </div>
-        <div class="icon" onclick="mobile_navbar_link_hider()">
-            <i class="fa fa-bars"></i>
-        </div>
-        <script>
-            function mobile_navbar_link_hider() {
-            var x = document.getElementById("mobile_navbar_links");
-            if (x.style.display === "flex") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "flex";
-            }
-            } 
-        </script>
-    </div>
-    <div class="mainflex">
-      <div class="main1">
-        <a class="main1_logo_a" href="#">
-          <img class="main1_logo" src="DLOGO.png" alt="FG NETWORK">
-        </a>
-        <div class="main1_description">
-          <a>FG NETWORK S5,<br>BEST</a>
-          <a class="main1_actcent">PUBLIC SMP LIFESTEAL / SURVIVAL ETC</a><a>.</a>
-        </div>
-        <div class="main1_ipcopier_div">
-          <button class="main1_ipcopier" onclick="copyText()" type="button">
-            <span class="main1_ipcopier_text1">play.fgnetworks5.online</span>
-            <br>
-            <span class="main1_ipcopier_text2">Click to copy</span>
-          </button>
-          <script>
-            function copyText() {
-                navigator.clipboard.writeText
-            ("play.fgnetworks5.online");
-                }
-            $(document).ready(function() {
-            $('.main1_ipcopier').click(function() {
-                var popup = $('<div>', { class: 'main1_popup' })
-                .append($('<h3 class="copy_confirm">').text('Copied IP to clipboard'))
-                $(this).after(popup);
-                setTimeout(function() {
-                popup.remove();
-                }, 1000);
-            });
-            });
-        </script>
-        </div>
-        <a href="#more" class="scroll">
-          <img alt="downarrow" class="main1_downarrow" src="arrow.png">
-        </a>
-        <script>
-          const scrollLinks = document.querySelectorAll('.scroll');
-          scrollLinks.forEach(function(link) {
-            link.addEventListener('click', function(event) {
-              event.preventDefault();
-              const target = document.querySelector(link.getAttribute('href'));
-              const offsetTop = target.offsetTop;
-              window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-              });
-            });
-          });
-        </script>
-      </div>
-      <div id="more"></div>
-      <div class="main2">
-        <a class="headline">What we have</a>
-        <div class="main2_features_div">
-          <div class="main2_feature">
-            <img class="main2_feature_img" alt="Feature Image" src="LIFSTL.png">
-            <a class="main2_feature_headline">LifeSteal</a>
-            <a class="main2_feature_text">Minecraft Lifesteal is a unique game mode or plugin where players can steal health from others</a>
-          </div>
-          <div class="main2_feature">
-            <img class="main2_feature_img" alt="Feature Image" src="ITEM.png">
-            <a class="main2_feature_headline">Custom Armors And Tools</a>
-            <a class="main2_feature_text">Enhance your experience , Stop using those boring old tools and try something new</a>
-          </div>
-          <div class="main2_feature">
-            <img class="main2_feature_img" alt="Feature Image" src="CRATES.png">
-            <a class="main2_feature_headline">Custom Crates</a>
-            <a class="main2_feature_text">Try out your luck to get some godly items!</a>
-          </div>
-          <div class="main2_feature">
-            <img class="main2_feature_img" alt="Feature Image" src="RANK.png">
-            <a class="main2_feature_headline">Rank System</a>
-            <a class="main2_feature_text">Acquire more power to conquer the Minecraft world with better ranks</a>
-          </div>
-          <div class="main2_feature">
-            <img class="main2_feature_img" alt="Feature Image" src="ENCHANT.jpg">
-            <a class="main2_feature_headline">Custom Enchants</a>
-            <a class="main2_feature_text">Bored with old enchants? We got crazy and destructible enchants! Gear up and feel the power of destruction</a>
-          </div>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">FG</div>
+        <div>
+          <div style="font-weight:800">FG NETWORK</div>
+          <div class="muted" style="font-size:13px">Private Minecraft server • Apply for whitelist to join</div>
         </div>
       </div>
-      <div id="discord"></div>
-      <div class="main4">
-        <a class="headline">Join the Discord</a>
-        <div class="main4_dc_div">
-          <iframe class="main4_dc_widget" src="MLOGO.png" width="350" height="369" title="discord" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-          <div class="main4_dc_description_div">
-            <a class="main4_dc_description_title">Let's talk!</a>
-            <a class="main4_dc_description"> ・Meet other players <br> ・Ask questions <br> ・Get notified about updates <br> ・Give feedback  <br><br> &amp; more </a>
-            <a href="https://discord.gg/cVk3FcEXVS" class="main4_dc_button_a">
-              <div class="main4_dc_button">Join</div>
-            </a>
+      <nav class="hide-sm">
+        <a href="#features">Features</a>
+        <a href="#whitelist">Whitelist</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <h1>FG NETWORK — Private Minecraft Server</h1>
+          <div class="tag">Ek friendly, secure aur professional private server. Agar aap join karna chahte ho toh whitelist apply karo — link seedha form par jayega.</div>
+
+          <div class="actions">
+            <!-- Replace WHITELIST_FORM_URL with your real form link -->
+            <a class="btn btn-apply" href="https://example.com/whitelist-form" id="applyBtn">Apply for Whitelist</a>
+            <!-- Replace DISCORD_URL with your Discord invite -->
+            <a class="btn btn-discord" href="https://discord.gg/example" target="_blank">Join Discord</a>
+          </div>
+
+          <div class="features" style="margin-top:18px">
+            <div class="card feature"><h4>Private</h4><p class="muted">Sirf approved players hi join kar sakte hain.</p></div>
+            <div class="card feature"><h4>Secure</h4><p class="muted">Strict rules aur safe environment.</p></div>
+            <div class="card feature"><h4>Friendly Community</h4><p class="muted">Active aur supportive members.</p></div>
           </div>
         </div>
-      </div>
-      <div id="about"></div>
-      <div class="main5">
-        <a class="headline">Who we are</a>
-        <div class="main5_admin_div">
-          <div class="main5_admins_div main5_admins_dev_type2">
-            <img class="main5_admins_img" alt="admin member img" src="FG.png">
-            <div class="main5_admins_description_div">
-              <a class="main5_admins_description_rank main5_admins_description_rank_owner">[Owner]</a>
-              <a class="main5_admins_description_title" href="">TEAMFGYTLEADER</a>
-              <a class="main5_admins_description"><font color="red">[Owner]</font><br>Founder and the developer of the server and has a YouTube channel named as TEAMFGYT2.O <br><a href ="https://www.youtube.com/@teamfgyt2.o" Title="A YouTube Link">Click to visit the YouTube channel </a></a>
+
+        <aside class="card server-box">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-size:14px;font-weight:700">Server IP</div>
+              <div class="muted">play.fg-network.example</div>
+            </div>
+            <div class="center">
+              <div style="font-size:12px;color:var(--muted)">Status</div>
+              <div id="status" style="font-weight:800;margin-top:6px">Offline</div>
             </div>
           </div>
-          <div class="main5_admins_div main5_admins_dev_type1">
-            <img class="main5_admins_img" alt="admin member img" src="GMR LOGO.jpg">
-            <div class="main5_admins_description_div">
-              <a class="main5_admins_description_rank main5_admins_description_rank_admin">[Admin]</a>
-              <a class="main5_admins_description_title" href="">GMR PLAYS</a>
-              <a class="main5_admins_description"><font color="#FF7722">[Admin]</font><br>Played a major role in the development of Minecraft server <br><a href ="https://www.youtube.com/@gmrplays" Title="A YouTube Link">Click to visit the YouTube channel </a></a>
-            </div>
+
+          <div style="margin-top:12px">
+            <div class="muted">Latest updates</div>
+            <ul style="margin:8px 0 0;padding-left:18px;color:var(--muted)">
+              <li>Server launched (private beta)</li>
+              <li>Whitelist process active</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:8px;justify-content:center">
+            <a class="btn btn-apply" href="https://example.com/whitelist-form">Apply</a>
+            <a class="btn btn-discord" href="https://discord.gg/example" target="_blank">Discord</a>
+          </div>
+        </aside>
+      </section>
+
+      <section id="features" style="margin-top:18px">
+        <h2>Why FG NETWORK?</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px">
+          <div class="card">Carefully curated whitelist to keep trolls away and build a community.</div>
+          <div class="card">Custom plugins, regular events, staff to help new players.</div>
+        </div>
+      </section>
+
+      <section id="whitelist">
+        <h2 style="margin-top:18px">Whitelist — Apply to join</h2>
+        <div class="card" style="margin-top:8px">
+          <p class="muted">Click the button below to open the whitelist application form. Aapka form directly humare Google Form / Typeform / custom form par jayega (jo bhi link aap daloge).</p>
+          <div style="margin-top:12px">
+            <a class="btn btn-apply" href="https://example.com/whitelist-form" id="applyBtn2">Go to Whitelist Form</a>
+          </div>
+
+          <div style="margin-top:12px;color:var(--muted)">
+            <strong>Process:</strong>
+            <ol>
+              <li>Form fill karo — basic questions (Discord, IGN, reason to join).</li>
+              <li>Staff review karega — agar approved hua toh aapko Discord par aur server whitelist ki details bheji jayegi.</li>
+              <li>Join karne ke liye server IP aur rules follow karo.</li>
+            </ol>
           </div>
         </div>
-        <div class="main5_supporter_div">
-          <div class="main5_supporters_div">
-            <img class="main5_supporters_img" alt="supporters member img" src="SANU.jpg">
-            <div class="main5_supporters_description_div">
-              <a class="main5_supporters_description_rank main5_supporters_description_rank_supporter">[Head Staff]</a>
-              <a class="main5_supporters_description_title">Sanidhya</a>
-              <a class="main5_supporters_description"><font color="#FFB6C1">[H.Staff]</font><br>Helped in the development of Fg Network website and will be monitoring the people in the server for suspicious activity</a>
-            </div>
-          </div>
-          <div class="main5_supporters_div">
-            <img class="main5_supporters_img" alt="supporters member img" src="SUJIT.png">
-            <div class="main5_supporters_description_div">
-              <a class="main5_supporters_description_rank main5_supporters_description_rank_supporter"><font style= "rockwell" color="green"> <b>[Donator]</b></font></a>
-              <a class="main5_supporters_description_title"><font style= "rockwell" color=""> <b>Sujit</b></font></a>
-              <a class="main5_supporters_description"><font color="green">[Donator / Developer]</font><br>Donated a good value for our server, really appreciate it sujit bhai</a>
-            </div>
-          </div>
-          <div class="main5_supporters_div">
-            <img class="main5_supporters_img" alt="supporters member img" src="SL.jpg">
-            <div class="main5_supporters_description_div">
-              <a class="main5_supporters_description_rank main5_supporters_description_rank_supporter">[Staff]</a>
-              <a class="main5_supporters_description_title">SLshipYT</a>
-              <a class="main5_supporters_description"><font color="#9B870C">[Staff]</font><br>A very important staff member who helped to test the server and find out bugs and glitches and will be sub monitoring players</a>
-            </div>
-          </div>
-          <div class="main5_supporters_div">
-            <img class="main5_supporters_img" alt="supporters member img" src="ILOVER.png">
-            <div class="main5_supporters_description_div">
-              <a class="main5_supporters_description_rank main5_supporters_description_rank_supporter"><font style= "rockwell" color="green"> <b>[Donator]</b></font></a>
-              <a class="main5_supporters_description_title"><font style= "rockwell" color=""> <b>ILover</b></font></a>
-              <a class="main5_supporters_description"><font color="green">[Donator]</font><br>First donater of the server, he helped us to start our server from the beginning. Thank you so much for your support</a>
-            </div>
-          </div>
-          <div class="main5_supporters_div">
-            <img class="main5_supporters_img" alt="supporters member img" src="AG.jpg">
-            <div class="main5_supporters_description_div">
-              <a class="main5_supporters_description_rank main5_supporters_description_rank_supporter">[Staff]</a>
-              <a class="main5_supporters_description_title">Ayush</a>
-              <a class="main5_supporters_description"><font color="#9B870C">[Staff]</font><br>New Staff Member</a>
+      </section>
+
+      <section id="contact" style="margin-top:18px">
+        <h2>Contact</h2>
+        <div class="card" style="margin-top:8px">
+          <p class="muted">Questions? Join Discord or email the admin.</p>
+          <p class="muted">Admin email: <a href="mailto:admin@fg-network.example" style="color:inherit;text-decoration:underline">admin@fg-network.example</a></p>
         </div>
-        </div>
-        <div class="main5_supporters_div">
-          <img class="main5_supporters_img" alt="supporters member img" src="COBRA.png">
-          <div class="main5_supporters_description_div">
-            <a class="main5_supporters_description_rank main5_supporters_description_rank_supporter">[Staff]</a>
-            <a class="main5_supporters_description_title">Cobra</a>
-            <a class="main5_supporters_description"><font color="#9B870C">[Staff]</font><br>New Staff Member</a>
-        </div>
-        </div>
-        </div>
-      </div>
-      <div id="join"></div>
-      <div class="main3">
-        <a class="headline">How to join</a>
-        <div class="main3_join_div_div">
-          <div class="main3_join_div">
-            <a class="main3_join_title">Java</a>
-            <div class="main3_join_content_div">
-              <div class="main3_join_categories">
-                <a>IP:</a>
-                <a>Version:</a>
-              </div>
-              <div class="main3_join_values">
-                <a>play.fgnetworks5.online</a>
-                <a>1.8 / 1.21.4</a>
-              </div>
-            </div>
-          </div>
-          <div class="main3_join_div">
-            <a class="main3_join_title">Bedrock</a>
-            <div class="main3_join_content_div">
-              <div class="main3_join_categories">
-                <a>IP:</a>
-                <a>Port:</a>
-              </div>
-              <div class="main3_join_values">
-                <a>play.fgnetworks5.online</a>
-                <a>25607</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer class="copyright_div">
-      <a href="" class="copyright"></a>
-      <p>Date:11-02-2025 | Created By Fgyt®</p>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> FG NETWORK • Private server — All rights reserved
     </footer>
-  </body>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Replace placeholders when you edit the file or host using your actual values.
+    // -- Small optional script to check server status via an API (disabled by default).
+    // If you have a server-status API, set `SERVER_STATUS_API` to its URL. It should return JSON {status: "online"/"offline", players: X}
+    const SERVER_STATUS_API = null; // e.g. "https://api.mcsrvstat.us/2/play.example.com"
+    async function fetchStatus(){
+      if(!SERVER_STATUS_API) return;
+      try{
+        const r = await fetch(SERVER_STATUS_API);
+        if(!r.ok) throw new Error('status fetch failed');
+        const j = await r.json();
+        // set status text based on returned fields (customize as per API)
+        const statusEl = document.getElementById('status');
+        statusEl.textContent = j.online ? 'Online — ' + (j.players && j.players.online ? j.players.online + ' players' : 'players info') : 'Offline';
+      }catch(e){console.log('status error', e)}
+    }
+    fetchStatus();
+  </script>
+</body>
 </html>
